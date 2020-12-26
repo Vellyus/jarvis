@@ -1,0 +1,24 @@
+example: Good morning, Mr. Stark! It's 7:35 pm, Sunday. The outside temperature is 1.11 °C, the weather is cloudy. Today is the International Programmers' Day.
+
+
+
+
+features:
+
+	-have different wallpapaers for different weathers (or maybe videos)
+		(search on pexels for sunny, sunshine, cloudy, clouds ect...)
+	- make it universal, so everyone can replace the data with their own
+		(object for data like name and birthdays)
+	- geolocation and weather from the weather app
+	- world days: https://www.timeanddate.com/holidays/world/2021
+	(solution from music player special days)
+		- learn more about todays international day thing (have a button for that, read and display the info when clicked)
+		task: copy the info for a few years ahead (add "the" to the front if needed)
+	- warn if family member has a birthday in a week
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  MAKE A COPY OF THE WEATHER APP AND EXTEND IT, DON'T START FROM SCRATCH!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
