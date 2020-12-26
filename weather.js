@@ -349,9 +349,51 @@ navigator.geolocation.getCurrentPosition(function (position)
 
 
         // Write all new code here:
-        const username = "Mr. Szalai"
+        const username = "Mr. Stark"
         const message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, the weather is ${weather}. Today is the International Programmers' Day.`
 
         document.querySelector(".message").innerText = message
     });
 })
+
+
+
+// TEXT TO SPEECH
+const voiceList = document.querySelector('#voiceList')
+const txtInput = document.querySelector('.message')
+const btnSpeak = document.querySelector('#btnSpeak')
+
+const tts = window.speechSynthesis;
+let voices = [];
+
+GetVoices();
+
+if (speechSynthesis !== undefined)
+{
+    speechSynthesis.onvoiceschanged = GetVoices;
+}
+
+function GetVoices()
+{
+    voices = tts.getVoices();
+    voiceList.innerHTML = '';
+    voices.forEach((voice) =>
+    {
+        let listItem = document.createElement('option');
+        listItem.textContent = voice.name;
+        listItem.setAttribute('data-lang', voice.lang);
+        listItem.setAttribute('data-name', voice.name);
+        voiceList.appendChild(listItem);
+    });
+
+    voiceList.selectedIndex = 0;
+}
+setTimeout(talk, 2000)
+function talk()
+{
+    var msg = new SpeechSynthesisUtterance();
+    msg.voice = voices[4];
+    msg.text = document.querySelector(".message").innerText;
+    msg.lang = 'en';
+    speechSynthesis.speak(msg);
+}
