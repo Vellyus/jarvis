@@ -12,26 +12,34 @@ let dayDiv = document.querySelector('.day');
 let weather;
 
 // Functions
-function checkStatus(response) {
-    if (response.ok) {
+function checkStatus(response)
+{
+    if (response.ok)
+    {
         return Promise.resolve(response);
-    } else {
+    } else
+    {
         return Promise.reject(new Error(response.statusText));
     }
 }
 
-function fetchData(url) {
+function fetchData(url)
+{
     return fetch(url)
         .then(checkStatus)
         .then(res => res.json())
         .catch(error => console.log('Looks like there was a problem!', error))
 }
 
-function getTime() {
-    function pad(number) {
-        if (number < 10) {
+function getTime()
+{
+    function pad(number)
+    {
+        if (number < 10)
+        {
             return '0' + number;
-        } else {
+        } else
+        {
             return number;
         }
     }
@@ -39,12 +47,15 @@ function getTime() {
     let now = new Date;
     day = now.getUTCDay();
 
-    function getHH() {
-        if (now.getUTCHours() + weather.timezone / 3600 >= 24) {
+    function getHH()
+    {
+        if (now.getUTCHours() + weather.timezone / 3600 >= 24)
+        {
             day += 1;
 
             return now.getUTCHours() + weather.timezone / 3600 - 24;
-        } else if (now.getUTCHours() + weather.timezone / 3600 <= 0) {
+        } else if (now.getUTCHours() + weather.timezone / 3600 <= 0)
+        {
             day -= 1;
 
             return now.getUTCHours() + weather.timezone / 3600 + 24;
@@ -55,16 +66,19 @@ function getTime() {
     let mm = now.getUTCMinutes();
     let ss = now.getUTCSeconds();
 
-    if (Number.isInteger((hh - 0.5))) {
+    if (Number.isInteger((hh - 0.5)))
+    {
         hh -= 0.5;
         mm += 30;
-        if (mm >= 60) {
+        if (mm >= 60)
+        {
             mm -= 60;
             hh += 1;
         }
     }
 
-    if (hh === 24) {
+    if (hh === 24)
+    {
         hh = 0;
         day += 1;
     }
@@ -72,36 +86,52 @@ function getTime() {
     mm = pad(mm);
     ss = pad(ss);
 
-    if (lang === 'hu') {
-        if (day === 1) {
+    if (lang === 'hu')
+    {
+        if (day === 1)
+        {
             day = 'Hétfő';
-        } else if (day === 2) {
+        } else if (day === 2)
+        {
             day = 'Kedd';
-        } else if (day === 3) {
+        } else if (day === 3)
+        {
             day = 'Szerda';
-        } else if (day === 4) {
+        } else if (day === 4)
+        {
             day = 'Csütörtök';
-        } else if (day === 5) {
+        } else if (day === 5)
+        {
             day = 'Péntek';
-        } else if (day === 6) {
+        } else if (day === 6)
+        {
             day = 'Szombat';
-        } else {
+        } else
+        {
             day = 'Vasárnap';
         }
-    } else {
-        if (day === 1) {
+    } else
+    {
+        if (day === 1)
+        {
             day = 'Monday';
-        } else if (day === 2) {
+        } else if (day === 2)
+        {
             day = 'Tuesday';
-        } else if (day === 3) {
+        } else if (day === 3)
+        {
             day = 'Wednesday';
-        } else if (day === 4) {
+        } else if (day === 4)
+        {
             day = 'Thursday';
-        } else if (day === 5) {
+        } else if (day === 5)
+        {
             day = 'Friday';
-        } else if (day === 6) {
+        } else if (day === 6)
+        {
             day = 'Saturday';
-        } else {
+        } else
+        {
             day = 'Sunday';
         }
     }
@@ -110,11 +140,13 @@ function getTime() {
 
     return `${hh}:${mm}:${ss}`;
 }
-function tickClock() {
+function tickClock()
+{
     clockDiv.textContent = getTime();
 }
 
-function displayResults() {
+function displayResults()
+{
     city.innerText = weather.name;
     temp.innerText = weather.main.temp + ' °C';
     desc.innerText = weather.weather[0].description;
@@ -127,42 +159,61 @@ function displayResults() {
 
 }
 
-function displayIcon() {
-    if (weather.weather[0].icon === '01d') {
+function displayIcon()
+{
+    if (weather.weather[0].icon === '01d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/01d@2x.png");
-    } else if (weather.weather[0].icon === '01n') {
+    } else if (weather.weather[0].icon === '01n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/01n@2x.png");
-    } else if (weather.weather[0].icon === '02d') {
+    } else if (weather.weather[0].icon === '02d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/02d@2x.png");
-    } else if (weather.weather[0].icon === '02n') {
+    } else if (weather.weather[0].icon === '02n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/02n@2x.png");
-    } else if (weather.weather[0].icon === '03d') {
+    } else if (weather.weather[0].icon === '03d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/03d@2x.png");
-    } else if (weather.weather[0].icon === '03n') {
+    } else if (weather.weather[0].icon === '03n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/03n@2x.png");
-    } else if (weather.weather[0].icon === '04d') {
+    } else if (weather.weather[0].icon === '04d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/04d@2x.png");
-    } else if (weather.weather[0].icon === '04n') {
+    } else if (weather.weather[0].icon === '04n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/04n@2x.png");
-    } else if (weather.weather[0].icon === '09d') {
+    } else if (weather.weather[0].icon === '09d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/09d@2x.png");
-    } else if (weather.weather[0].icon === '09n') {
+    } else if (weather.weather[0].icon === '09n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/09n@2x.png");
-    } else if (weather.weather[0].icon === '10d') {
+    } else if (weather.weather[0].icon === '10d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/10d@2x.png");
-    } else if (weather.weather[0].icon === '10n') {
+    } else if (weather.weather[0].icon === '10n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/10n@2x.png");
-    } else if (weather.weather[0].icon === '11d') {
+    } else if (weather.weather[0].icon === '11d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/11d@2x.png");
-    } else if (weather.weather[0].icon === '11n') {
+    } else if (weather.weather[0].icon === '11n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/11n@2x.png");
-    } else if (weather.weather[0].icon === '13d') {
+    } else if (weather.weather[0].icon === '13d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/13d@2x.png");
-    } else if (weather.weather[0].icon === '13n') {
+    } else if (weather.weather[0].icon === '13n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/13n@2x.png");
-    } else if (weather.weather[0].icon === '50d') {
+    } else if (weather.weather[0].icon === '50d')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/50d@2x.png");
-    } else if (weather.weather[0].icon === '50n') {
+    } else if (weather.weather[0].icon === '50n')
+    {
         icon.setAttribute("src", "http://openweathermap.org/img/wn/50n@2x.png");
     }
 }
@@ -176,24 +227,28 @@ temp.style.display = "none";
 desc.style.display = "none";
 
 // Set language
-if (navigator.language === 'hu') {
+if (navigator.language === 'hu')
+{
     lang = 'hu';
     document.querySelector('input').setAttribute('placeholder', 'Írd be egy város nevét!');
     document.querySelector('button').innerText = 'Keresés';
     info.innerText = 'Engedélyezz hozzáférést a tartózkodási helyedhez vagy keress egy város neve alapján!';
-} else {
+} else
+{
     lang = 'en';
     info.innerText = 'Please enable acces to your location or search for a city name!';
 
 }
 
 // XHR by geolocation
-navigator.geolocation.getCurrentPosition(function (position) {
+navigator.geolocation.getCurrentPosition(function (position)
+{
     let lon = position.coords.longitude;
     let lat = position.coords.latitude;
 
-    fetchData('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&units=metric' + '&lang=' + lang).then(data => {
-        weather = data;
+    fetchData('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&units=metric' + '&lang=' + lang).then(data =>
+    {
+        weather = data
         myTimer = setInterval(tickClock, 1000);
         displayResults();
         displayIcon();
@@ -201,11 +256,15 @@ navigator.geolocation.getCurrentPosition(function (position) {
 })
 
 // If user disabled geolocation
-function checkForPermission(error) {
-    if (error.code == error.PERMISSION_DENIED) {
-        if (navigator.language === 'hu') {
+function checkForPermission(error)
+{
+    if (error.code == error.PERMISSION_DENIED)
+    {
+        if (navigator.language === 'hu')
+        {
             info.innerText = 'Engedélyezz hozzáférést a tartózkodási helyedhez vagy keress egy város neve alapján!';
-        } else {
+        } else
+        {
             info.innerText = 'Please enable acces to your location or search for a city name!';
         }
         info.style.display = "initial";
@@ -217,15 +276,18 @@ function checkForPermission(error) {
 };
 
 // Search button
-button.addEventListener('click', () => {
-    if (clockDiv.textContent !== '') {
+button.addEventListener('click', () =>
+{
+    if (clockDiv.textContent !== '')
+    {
         clearInterval(myTimer);
     }
 
     let input = document.querySelector('input').value;
     // XHR by search
 
-    fetchData('https://api.openweathermap.org/data/2.5/weather?q=' + input + '&units=metric' + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&lang=' + lang).then(data => {
+    fetchData('https://api.openweathermap.org/data/2.5/weather?q=' + input + '&units=metric' + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&lang=' + lang).then(data =>
+    {
         weather = data;
         myTimer = setInterval(tickClock, 1000);
         displayResults();
@@ -234,5 +296,62 @@ button.addEventListener('click', () => {
 })
 
 
+////////////////////////////////////////////////////////////////////////
 
 
+
+navigator.geolocation.getCurrentPosition(function (position)
+{
+    let lon = position.coords.longitude;
+    let lat = position.coords.latitude;
+
+    fetchData('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&units=metric' + '&lang=' + lang).then(data =>
+    {
+        console.log(data)
+
+        const now = new Date
+        console.log(now.getTime())
+        const hours = function ()
+        {
+            if (now.getHours() >= 10) return now.getHours()
+            else return "0" + now.getHours()
+        }()
+        const minutes = function ()
+        {
+            if (now.getMinutes() >= 10) return now.getMinutes()
+            else return "0" + now.getMinutes()
+        }()
+        const amORpm = function ()
+        {
+            if (hours >= 12) return "pm"
+            return "am"
+        }()
+        const greeting = function ()
+        {
+            if (now.getTime() >= data.sys.sunrise &&
+                amORpm === "am") return "morning"
+            else if (now.getTime() >= data.sys.sunset &&
+                amORpm === "pm") return "afternoon"
+            else return "evening"
+        }()
+        const day = function ()
+        {
+            if (now.getDay() === 0) return "Sunday"
+            else if (now.getDay() === 1) return "Monday"
+            else if (now.getDay() === 2) return "Tuesday"
+            else if (now.getDay() === 3) return "Wednesday"
+            else if (now.getDay() === 4) return "Thursday"
+            else if (now.getDay() === 5) return "Friday"
+            else return "Saturday"
+        }()
+        const weather = data.weather[0].main.toLowerCase()
+
+
+
+        // Write all new code here:
+        const username = "Mr. Szalai"
+        const message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, the weather is ${weather}. Today is the International Programmers' Day.`
+
+        document.querySelector(".message").innerText = message
+    });
+})
