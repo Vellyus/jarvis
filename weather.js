@@ -424,7 +424,7 @@ setTimeout(talk, 2000) //TURN ON WHEN FINISHED!!!
 function talk()
 {
     var msg = new SpeechSynthesisUtterance();
-    msg.voice = voices[4];
+    msg.voice = voices[0];
     msg.text = document.querySelector(".message").innerText;
     msg.volume = 0.5;
     msg.lang = 'en';
