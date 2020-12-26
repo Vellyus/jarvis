@@ -328,7 +328,7 @@ navigator.geolocation.getCurrentPosition(function (position)
         {
             if (now.getTime() >= data.sys.sunrise &&
                 amORpm === "am") return "morning"
-            else if (now.getTime() >= data.sys.sunset &&
+            else if (now.getTime() < data.sys.sunset &&
                 amORpm === "pm") return "afternoon"
             else return "evening"
         }()
