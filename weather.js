@@ -311,19 +311,17 @@ navigator.geolocation.getCurrentPosition(function (position)
 
         const now = new Date
         console.log(now.getTime())
-        const hours = function ()
-        {
-            if (now.getHours() >= 10) return now.getHours()
-            else return "0" + now.getHours()
-        }()
-        const minutes = function ()
-        {
-            if (now.getMinutes() >= 10) return now.getMinutes()
-            else return "0" + now.getMinutes()
-        }()
+        let hours = now.getHours()
+
+        if (hours > 12) hours -= 12
+        // if (!(hours >= 10)) hours = "0" + hours
+
+        let minutes = now.getMinutes()
+        if (!(minutes >= 10)) minutes = "0" + minutes
+
         const amORpm = function ()
         {
-            if (hours >= 12) return "pm"
+            if (now.getHours() >= 12) return "pm"
             return "am"
         }()
         const greeting = function ()
@@ -344,18 +342,52 @@ navigator.geolocation.getCurrentPosition(function (position)
             else if (now.getDay() === 5) return "Friday"
             else return "Saturday"
         }()
-        const weather = data.weather[0].main.toLowerCase()
 
+        const weather = data.weather[0].main.toLowerCase()
+        let weatherInfo
+
+        if (weather === "clear") weatherInfo = "the sky is clear"
+        else if (weather === "clouds") weatherInfo = "the weather is cloudy"
+        else if (weather === "thunderstorm") weatherInfo = "there is a thunderstorm out there"
+        else if (weather === "drizzle") weatherInfo = "it's drizzling"
+        else if (weather === "rain") weatherInfo = "it's raining"
+        else if (weather === "snow") weatherInfo = "it's snowing"
+        else if (weather === "mist") weatherInfo = "the weather is misty"
+        else if (weather === "fog") weatherInfo = "the weather is foggy"
 
 
         // Write all new code here:
-        const username = "Mr. Stark"
-        const message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, the weather is ${weather}. Today is the International Programmers' Day.`
+        const username = "visitor"
+        let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
+
+        const year = "year" + now.getFullYear()
+        const month = "month" + now.getMonth()
+        const date = "date" + now.getDate()
+
+
+        if (Object.keys(calendar).includes(year))
+        {
+            if (Object.keys(calendar[year]).includes(month))
+            {
+                if (Object.keys(calendar[year][month]).includes(date))
+                {
+                    const message2 = `Today is the ${calendar[year][month][date]}.`
+                    message = `${message} ${message2}`
+
+                    if (calendar[year][month][date] === "April Fool's Day" ||
+                        calendar[year][month][date] === "Friday the 13th")
+                    {
+                        const message2 = `Today is ${calendar[year][month][date]}.`
+                        message = `${message} ${message2}`
+                    }
+                }
+            }
+        }
+
 
         document.querySelector(".message").innerText = message
     });
 })
-
 
 
 // TEXT TO SPEECH
@@ -388,12 +420,188 @@ function GetVoices()
 
     voiceList.selectedIndex = 0;
 }
-setTimeout(talk, 2000)
+setTimeout(talk, 2000) //TURN ON WHEN FINISHED!!!
 function talk()
 {
     var msg = new SpeechSynthesisUtterance();
     msg.voice = voices[4];
     msg.text = document.querySelector(".message").innerText;
+    msg.volume = 0.5;
     msg.lang = 'en';
     speechSynthesis.speak(msg);
 }
+
+// CALENDAR
+const calendar = {
+
+    year2021:
+    {
+        month0: {
+            date4: "World Braille Day",
+            date7: "International Programmers' Day",
+            date17: "World Religion Day",
+            date26: "International Customs Day",
+            date31: "World Leprosy Day"
+        },
+        month1: {
+            date2: "World Wetlands Day",
+            date11: "World Day of the Sick"
+        },
+        month2: {
+            date1: "Self-Injury Awareness Day",
+            date11: "World Kidney Day",
+            date27: "Earth Hour"
+        },
+        month3: {
+            date1: "April Fool's Day",
+            date18: "International Day for Monuments and Sites"
+        },
+        month4: {
+            date8: "World Ovarian Cancer Day",
+            date12: "International Nurses Day",
+            date20: "World Autoimmune / Autoinflammatory Arthritis Day",
+            date25: "African Liberation Day"
+        },
+        month7: {
+            date13: "Friday the 13th",
+            date31: "International Overdose Awareness Day",
+        },
+        month8: {
+            date4: "World Sexual Health Day",
+            date13: "International Programmers' Day",
+            date17: "Still's Disease Awareness Day",
+            date23: "International Celebrate Bisexuality Day",
+            date29: "World Heart Day",
+        },
+
+        month9: {
+            date1: "World Vegetarian Day",
+            date6: "World Cerebral Palsy Day",
+            date14: "World Sight Day",
+            date29: "World Stroke Day",
+        },
+        month9: {
+            date1: "World Vegan Day",
+            date12: "World Pneumonia Day",
+            date17: "World Prematurity Day",
+            date19: "International Men's Day",
+        }
+    },
+    year2022:
+    {
+        month0: {
+            date4: "World Braille Day",
+            date7: "International Programmers' Day",
+            date16: "World Religion Day",
+            date26: "International Customs Day",
+            date30: "World Leprosy Day"
+        },
+        month1: {
+            date2: "World Wetlands Day",
+            date11: "World Day of the Sick"
+        },
+        month2: {
+            date1: "Self-Injury Awareness Day",
+            date10: "World Kidney Day",
+            date26: "Earth Hour"
+        },
+        month3: {
+            date1: "April Fool's Day",
+            date18: "International Day for Monuments and Sites"
+        },
+        month4: {
+            date8: "World Ovarian Cancer Day",
+            date12: "International Nurses Day",
+            date13: "Friday the 13th",
+            date20: "World Autoimmune / Autoinflammatory Arthritis Day",
+            date25: "African Liberation Day"
+        },
+        month7: {
+            date31: "International Overdose Awareness Day",
+        },
+        month8: {
+            date4: "World Sexual Health Day",
+            date13: "International Programmers' Day",
+            date17: "Still's Disease Awareness Day",
+            date23: "International Celebrate Bisexuality Day",
+            date29: "World Heart Day",
+        },
+
+        month9: {
+            date1: "World Vegetarian Day",
+            date6: "World Cerebral Palsy Day",
+            date13: "World Sight Day",
+            date29: "World Stroke Day",
+        },
+        month9: {
+            date1: "World Vegan Day",
+            date12: "World Pneumonia Day",
+            date17: "World Prematurity Day",
+            date19: "International Men's Day",
+        }
+    },
+    year2023:
+    {
+        month0: {
+            date4: "World Braille Day",
+            date7: "International Programmers' Day",
+            date13: "Friday the 13th",
+            date16: "World Religion Day",
+            date26: "International Customs Day",
+            date29: "World Leprosy Day"
+        },
+        month1: {
+            date2: "World Wetlands Day",
+            date11: "World Day of the Sick"
+        },
+        month2: {
+            date1: "Self-Injury Awareness Day",
+            date9: "World Kidney Day",
+            date25: "Earth Hour"
+        },
+        month3: {
+            date1: "April Fool's Day",
+            date18: "International Day for Monuments and Sites"
+        },
+        month4: {
+            date8: "World Ovarian Cancer Day",
+            date12: "International Nurses Day",
+            date20: "World Autoimmune / Autoinflammatory Arthritis Day",
+            date25: "African Liberation Day"
+        },
+        month7: {
+            date31: "International Overdose Awareness Day",
+        },
+        month8: {
+            date4: "World Sexual Health Day",
+            date13: "International Programmers' Day",
+            date17: "Still's Disease Awareness Day",
+            date23: "International Celebrate Bisexuality Day",
+            date29: "World Heart Day",
+        },
+
+        month9: {
+            date1: "World Vegetarian Day",
+            date6: "World Cerebral Palsy Day",
+            date12: "World Sight Day",
+            date13: "Friday the 13th",
+            date29: "World Stroke Day",
+        },
+        month9: {
+            date1: "World Vegan Day",
+            date12: "World Pneumonia Day",
+            date17: "World Prematurity Day",
+            date19: "International Men's Day",
+        }
+    }
+}
+
+
+/* Birthdays:
+
+Mother: November 29.
+Father: May 3.
+Milán: February 20.
+Viki: July 16.
+
+*/
