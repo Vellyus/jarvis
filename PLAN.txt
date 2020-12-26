@@ -19,6 +19,9 @@ features:
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-  MAKE A COPY OF THE WEATHER APP AND EXTEND IT, DON'T START FROM SCRATCH!
+  											IMPORTANT
+
+			The data doesnt load on firefox, cause it loads the content before answering the popup thing for the coordinates.
+			This causes the reader to miss the entire thing too.
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
