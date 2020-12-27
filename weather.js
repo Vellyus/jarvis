@@ -357,7 +357,7 @@ function checkForPermission(error)
         desc.style.display = "none";
     }
 };
-
+/*
 // Search button
 button.addEventListener('click', () =>
 {
@@ -377,7 +377,7 @@ button.addEventListener('click', () =>
         displayIcon();
     })
 })
-
+*/
 
 
 // TEXT TO SPEECH

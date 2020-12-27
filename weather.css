@@ -36,7 +36,7 @@ body {
 .overlay {
     position: absolute;
     width: 45%;
-    height: 80%;
+    height: 55%;
     background-color: rgba(255, 255, 255, .4);
 }
 
@@ -55,7 +55,7 @@ main {
 
 .location,
 .temperature {
-    height: 20vh;
+    height: 10vh;
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -139,4 +139,5 @@ button:hover {
     line-height: 1.6;
     font-size: 1.1rem;
     font-weight: bold;
+    margin-top: 2rem;
 }
