@@ -378,10 +378,7 @@ navigator.geolocation.getCurrentPosition(function (position)
 
         document.querySelector(".message").innerText = message
         // TURN ON WHEN FINISHED
-        // talk(message)
-        voices = voices.filter(voice => voice.lang === "en-US")
-        console.log(voices)
-
+        talk(message)
     });
 })
 
@@ -461,12 +458,37 @@ function GetVoices()
 function talk()
 {
     var msg = new SpeechSynthesisUtterance();
-    msg.voice = voices[1];
+
+    if (voices.filter(voice => voice.name === "Google UK English Male").length !== 0) 
+    {
+        voices = voices.filter(voice => voice.name === "Google UK English Male")
+    }
+    if (voices.filter(voice => voice.name === "Microsoft Guy Online (Natural) - English (United States)").length !== 0) 
+    {
+        voices = voices.filter(voice => voice.name === "Microsoft Guy Online (Natural) - English (United States)")
+    }
+    if (voices.filter(voice => voice.name === "Microsoft David Desktop - English (United States)").length !== 0) 
+    {
+        voices = voices.filter(voice => voice.name === "Microsoft David Desktop - English (United States)")
+    }
+
+    msg.voice = voices[0];
+    console.log(voices)
+
     msg.text = document.querySelector(".message").innerText;
     msg.volume = 0.5;
     msg.lang = 'en';
     speechSynthesis.speak(msg);
 }
+
+
+// languages:
+// firefox: 2 microsoftos, 2. David
+// name: "Microsoft David Desktop - English (United States)"
+// edge: mind microsoftos
+// name: "Microsoft Guy Online (Natural) - English (United States)"
+// chrome
+// name: "Google UK English Male"
 
 // CALENDAR
 const calendar = {
