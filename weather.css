@@ -9,8 +9,7 @@ body {
     color: white;
     text-align: center;
     /* background-image: url("backgroundImage.jpg"); */
-    /* background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143)); */
-    background: url("img/clear_sky.jpg");
+    background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
     background-position: center;
     background-repeat: no-repeat;
     /* background-size: cover; */
