@@ -227,18 +227,18 @@ temp.style.display = "none";
 desc.style.display = "none";
 
 // Set language
-if (navigator.language === 'hu')
-{
-    lang = 'hu';
-    document.querySelector('input').setAttribute('placeholder', 'Írd be egy város nevét!');
-    document.querySelector('button').innerText = 'Keresés';
-    info.innerText = 'Engedélyezz hozzáférést a tartózkodási helyedhez vagy keress egy város neve alapján!';
-} else
-{
-    lang = 'en';
-    info.innerText = 'Please enable acces to your location or search for a city name!';
+// if (navigator.language === 'hu')
+// {
+//     lang = 'hu';
+//     document.querySelector('input').setAttribute('placeholder', 'Írd be egy város nevét!');
+//     document.querySelector('button').innerText = 'Keresés';
+//     info.innerText = 'Engedélyezz hozzáférést a tartózkodási helyedhez vagy keress egy város neve alapján!';
+// } else
+// {
+//     lang = 'en';
+//     info.innerText = 'Please enable acces to your location or search for a city name!';
 
-}
+// }
 
 // XHR by geolocation
 navigator.geolocation.getCurrentPosition(function (position)
@@ -260,12 +260,8 @@ navigator.geolocation.getCurrentPosition(function (position)
         console.log(now.getTime())
         let hours = now.getHours()
         let time = Math.floor(now.getTime() / 1000)
-        console.log(data.sys.sunset)
-        console.log(time)
-
 
         if (hours > 12) hours -= 12
-        // if (!(hours >= 10)) hours = "0" + hours
 
         let minutes = now.getMinutes()
         if (!(minutes >= 10)) minutes = "0" + minutes
@@ -307,7 +303,6 @@ navigator.geolocation.getCurrentPosition(function (position)
         else if (weatherStatus === "fog") weatherInfo = "the weather is foggy"
 
 
-        // Write all new code here:
         const username = "visitor"
         let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
 
@@ -337,7 +332,7 @@ navigator.geolocation.getCurrentPosition(function (position)
 
 
         document.querySelector(".message").innerText = message
-
+        // TURN ON WHEN FINISHED
         // talk(message)
 
     });
@@ -414,9 +409,8 @@ function GetVoices()
     });
 
     voiceList.selectedIndex = 0;
-}/*
-setTimeout(talk, 2000) //TURN ON WHEN FINISHED!!!
-*/
+}
+
 function talk()
 {
     var msg = new SpeechSynthesisUtterance();
