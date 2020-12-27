@@ -338,7 +338,7 @@ navigator.geolocation.getCurrentPosition(function (position)
 
         document.querySelector(".message").innerText = message
 
-        talk(message)
+        // talk(message)
 
     });
 })
