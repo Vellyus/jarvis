@@ -259,6 +259,10 @@ navigator.geolocation.getCurrentPosition(function (position)
         const now = new Date
         console.log(now.getTime())
         let hours = now.getHours()
+        let time = Math.floor(now.getTime() / 1000)
+        console.log(data.sys.sunset)
+        console.log(time)
+
 
         if (hours > 12) hours -= 12
         // if (!(hours >= 10)) hours = "0" + hours
@@ -273,9 +277,9 @@ navigator.geolocation.getCurrentPosition(function (position)
         }()
         const greeting = function ()
         {
-            if (now.getTime() >= data.sys.sunrise &&
+            if (time >= data.sys.sunrise &&
                 amORpm === "am") return "morning"
-            else if (now.getTime() < data.sys.sunset &&
+            else if (time < data.sys.sunset &&
                 amORpm === "pm") return "afternoon"
             else return "evening"
         }()
@@ -334,6 +338,8 @@ navigator.geolocation.getCurrentPosition(function (position)
 
         document.querySelector(".message").innerText = message
 
+        talk(message)
+
     });
 })
 
@@ -378,99 +384,6 @@ button.addEventListener('click', () =>
 })
 
 
-////////////////////////////////////////////////////////////////////////
-
-
-/*
-navigator.geolocation.getCurrentPosition(function (position)
-{
-    let lon = position.coords.longitude;
-    let lat = position.coords.latitude;
-
-    fetchData('https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&APPID=7acc8d6ed18a854281620e6f354390a6' + '&units=metric' + '&lang=' + lang).then(data =>
-    {
-        console.log(data)
-
-        const now = new Date
-        console.log(now.getTime())
-        let hours = now.getHours()
-
-        if (hours > 12) hours -= 12
-        // if (!(hours >= 10)) hours = "0" + hours
-
-        let minutes = now.getMinutes()
-        if (!(minutes >= 10)) minutes = "0" + minutes
-
-        const amORpm = function ()
-        {
-            if (now.getHours() >= 12) return "pm"
-            return "am"
-        }()
-        const greeting = function ()
-        {
-            if (now.getTime() >= data.sys.sunrise &&
-                amORpm === "am") return "morning"
-            else if (now.getTime() < data.sys.sunset &&
-                amORpm === "pm") return "afternoon"
-            else return "evening"
-        }()
-        const day = function ()
-        {
-            if (now.getDay() === 0) return "Sunday"
-            else if (now.getDay() === 1) return "Monday"
-            else if (now.getDay() === 2) return "Tuesday"
-            else if (now.getDay() === 3) return "Wednesday"
-            else if (now.getDay() === 4) return "Thursday"
-            else if (now.getDay() === 5) return "Friday"
-            else return "Saturday"
-        }()
-
-        const weather = data.weather[0].main.toLowerCase()
-        let weatherInfo
-
-        if (weather === "clear") weatherInfo = "the sky is clear"
-        else if (weather === "clouds") weatherInfo = "the weather is cloudy"
-        else if (weather === "thunderstorm") weatherInfo = "there is a thunderstorm out there"
-        else if (weather === "drizzle") weatherInfo = "it's drizzling"
-        else if (weather === "rain") weatherInfo = "it's raining"
-        else if (weather === "snow") weatherInfo = "it's snowing"
-        else if (weather === "mist") weatherInfo = "the weather is misty"
-        else if (weather === "fog") weatherInfo = "the weather is foggy"
-
-
-        // Write all new code here:
-        const username = "visitor"
-        let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
-
-        const year = "year" + now.getFullYear()
-        const month = "month" + now.getMonth()
-        const date = "date" + now.getDate()
-
-
-        if (Object.keys(calendar).includes(year))
-        {
-            if (Object.keys(calendar[year]).includes(month))
-            {
-                if (Object.keys(calendar[year][month]).includes(date))
-                {
-                    const message2 = `Today is the ${calendar[year][month][date]}.`
-                    message = `${message} ${message2}`
-
-                    if (calendar[year][month][date] === "April Fool's Day" ||
-                        calendar[year][month][date] === "Friday the 13th")
-                    {
-                        const message2 = `Today is ${calendar[year][month][date]}.`
-                        message = `${message} ${message2}`
-                    }
-                }
-            }
-        }
-
-
-        document.querySelector(".message").innerText = message
-    });
-})
-*/
 
 // TEXT TO SPEECH
 const voiceList = document.querySelector('#voiceList')
@@ -501,8 +414,9 @@ function GetVoices()
     });
 
     voiceList.selectedIndex = 0;
-}
+}/*
 setTimeout(talk, 2000) //TURN ON WHEN FINISHED!!!
+*/
 function talk()
 {
     var msg = new SpeechSynthesisUtterance();
