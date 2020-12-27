@@ -9,7 +9,8 @@ body {
     color: white;
     text-align: center;
     /* background-image: url("backgroundImage.jpg"); */
-    background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
+    /* background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143)); */
+    background: url("img/clear_sky.jpg");
     /* background-size: cover; */
     /* background-position: center; */
 }
@@ -34,7 +35,7 @@ body {
     position: absolute;
     width: 45%;
     height: 80%;
-    background-color: rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .4);
 }
 
 main {
@@ -47,6 +48,7 @@ main {
     position: absolute;
     top: 0;
     width: 100%;
+    color: black;
 }
 
 .location,
@@ -133,4 +135,6 @@ button:hover {
 .message {
     max-width: 30%;
     line-height: 1.6;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
