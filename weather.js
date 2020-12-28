@@ -298,6 +298,7 @@ navigator.geolocation.getCurrentPosition(function (position)
         const weatherStatus = data.weather[0].main.toLowerCase()
         let weatherInfo
         const body = document.querySelector("body")
+        const bodyContent = document.querySelector(".bodyContent")
 
         //background test
         // weatherStatus = "clouds"
@@ -384,12 +385,76 @@ navigator.geolocation.getCurrentPosition(function (position)
         document.querySelector(".message").innerText = message
         // TURN ON WHEN FINISHED
         // talk(message)
-        const button = document.querySelector("button")
-        button.addEventListener('click', () =>
-        {
-            talk(message)
 
-        });
+        bodyContent.style.display = "none"
+
+        const buttonDiv = document.querySelector(".buttonDiv")
+        const checkbox = document.querySelector("input")
+        console.log(checkbox)
+
+        checkbox.addEventListener("click", () =>
+        {
+
+            //bring forward the content
+            bodyContent.style.display = "initial"
+            buttonDiv.style.transform = "scale(0)"
+            buttonDiv.style.transition = "transform 1s ease-out;"
+            buttonDiv.style.display = "none"
+
+
+            if (weatherStatus === "clear") 
+            {
+                weatherInfo = "the sky is clear"
+                bodyContent.style.background = "url(img/clear_sky.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/clear_sky_night.jpg)"
+            }
+            else if (weatherStatus === "clouds")
+            {
+                weatherInfo = "the weather is cloudy"
+                bodyContent.style.background = "url(img/clouds.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/clouds_night.jpg)"
+            }
+            else if (weatherStatus === "thunderstorm")
+            {
+                weatherInfo = "there is a thunderstorm out there"
+                bodyContent.style.background = "url(img/thunderstorm.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/thunderstorm_night.jpg)"
+            }
+            else if (weatherStatus === "drizzle") 
+            {
+                weatherInfo = "it's drizzling"
+                bodyContent.style.background = "url(img/drizzle.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/drizzle_night.jpg)"
+            }
+            else if (weatherStatus === "rain")
+            {
+                weatherInfo = "it's raining"
+                bodyContent.style.background = "url(img/rain.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/rain_night.jpg)"
+            }
+            else if (weatherStatus === "snow")
+            {
+                weatherInfo = "it's snowing"
+                bodyContent.style.background = "url(img/snow.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/snow_night.jpg)"
+            }
+            else if (weatherStatus === "mist") 
+            {
+                weatherInfo = "the weather is misty"
+                bodyContent.style.background = "url(img/mist.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/mist_night.jpg)"
+            }
+            else if (weatherStatus === "fog") 
+            {
+                weatherInfo = "the weather is foggy"
+                bodyContent.style.background = "url(img/fog.jpg)"
+                if (greeting === "evening") bodyContent.style.background = "url(img/fog_night.jpg)"
+            }
+
+
+            talk(message)
+        })
+
     });
 })
 
