@@ -352,6 +352,7 @@ navigator.geolocation.getCurrentPosition(function (position)
             body.style.background = "url(img/fog.jpg)"
             if (greeting === "evening") body.style.background = "url(img/fog_night.jpg)"
         }
+        bodyContent.style.display = "none"
 
 
         const username = "visitor"
