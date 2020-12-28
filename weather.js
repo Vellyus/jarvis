@@ -1,4 +1,3 @@
-const button = document.querySelector('button');
 const city = document.querySelector('#city');
 const icon = document.querySelector('#icon');
 const temp = document.querySelector('#temp');
@@ -10,6 +9,12 @@ let myTimer; // var for the interval reset
 let day;
 let dayDiv = document.querySelector('.day');
 let weather;
+
+
+const body = document.querySelector("body")
+const button = document.createElement('button');
+button.style.display = "none"
+body.appendChild(button)
 
 // Functions
 function checkStatus(response)
@@ -378,7 +383,7 @@ navigator.geolocation.getCurrentPosition(function (position)
 
         document.querySelector(".message").innerText = message
         // TURN ON WHEN FINISHED
-        talk(message)
+        // talk(message)
     });
 })
 
@@ -664,3 +669,4 @@ Milán: February 20.
 Viki: July 16.
 
 */
+
