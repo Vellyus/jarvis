@@ -6,7 +6,7 @@
 
 body {
     font-family: sans-serif;
-    color: white;
+    color: #eee;
     text-align: center;
     /* background-image: url("backgroundImage.jpg"); */
     background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
@@ -36,7 +36,7 @@ body {
     position: absolute;
     width: 45%;
     height: 55%;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(0, 0, 0, .5);
 }
 
 main {
@@ -49,7 +49,6 @@ main {
     position: absolute;
     top: 0;
     width: 100%;
-    color: black;
 }
 
 .location,
