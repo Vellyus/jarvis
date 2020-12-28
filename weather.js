@@ -384,20 +384,11 @@ navigator.geolocation.getCurrentPosition(function (position)
         document.querySelector(".message").innerText = message
         // TURN ON WHEN FINISHED
         // talk(message)
-        const tts = window.speechSynthesis;
         const button = document.querySelector("button")
         button.addEventListener('click', () =>
         {
-            let toSpeak = new SpeechSynthesisUtterance(message);
-            let selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
-            voices.forEach((voice) =>
-            {
-                if (voice.name === selectedVoiceName)
-                {
-                    toSpeak.voice = voice;
-                }
-            });
-            tts.speak(toSpeak);
+            talk(message)
+
         });
     });
 })
@@ -452,14 +443,13 @@ const btnSpeak = document.querySelector('#btnSpeak')
 const tts = window.speechSynthesis;
 let voices = [];
 
-GetVoices();
 
 if (speechSynthesis !== undefined)
 {
-    speechSynthesis.onvoiceschanged = GetVoices;
+    speechSynthesis.onvoiceschanged = getVoices;
 }
 
-function GetVoices()
+function getVoices()
 {
     voices = tts.getVoices();
     voiceList.innerHTML = '';
