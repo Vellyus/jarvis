@@ -354,6 +354,12 @@ navigator.geolocation.getCurrentPosition(function (position)
             if (greeting === "evening") wrapper.style.background = "url(img/fog_night.jpg)"
         }
         // bodyContent.style.display = "none"
+        wrapper.style.backgroundSize = "cover"
+        wrapper.style.backgroundPosition = "center"
+        wrapper.style.backgroundRepeat = "no-repeat"
+
+
+
 
 
         const username = "visitor"

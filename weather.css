@@ -10,8 +10,6 @@ body {
     text-align: center;
     /* background-image: url("backgroundImage.jpg"); */
     /* background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143)); */
-    background-position: center;
-    background-repeat: no-repeat;
     /* background-size: cover; */
     /* background-position: center; */
     background: #0c0c0c;
@@ -31,9 +29,6 @@ body {
     align-items: center;
     background-color: transparent;
     position: relative;
-    background-position: top;
-    background-size: cover;
-    background-repeat: no-repeat;
     min-height: 100vh;
     display: none;
     /* animation: scaleUp 3s;
@@ -62,7 +57,7 @@ main {
 
 .location,
 .temperature {
-    height: 10vh;
+    /* height: 10vh; */
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -291,4 +286,24 @@ label input[type="checkbox"]:active~.btn {
         display: none;
         opacity: 0;
     }
+}
+
+/* Media Queries */
+
+@media (max-width: 767px) {
+    .overlay {
+        /* display: none; */
+        width: 100%;
+        height: 100%;
+    }
+
+    .message {
+        max-width: 80%;
+    }
+
+    .temperature {
+        flex-direction: row;
+        font-size: 1.35em;
+    }
+
 }
