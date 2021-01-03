@@ -299,6 +299,7 @@ navigator.geolocation.getCurrentPosition(function (position)
         let weatherInfo
         const body = document.querySelector("body")
         const bodyContent = document.querySelector(".bodyContent")
+        const wrapper = document.querySelector(".wrapper")
 
         //background test
         // weatherStatus = "clouds"
@@ -307,52 +308,52 @@ navigator.geolocation.getCurrentPosition(function (position)
         if (weatherStatus === "clear") 
         {
             weatherInfo = "the sky is clear"
-            body.style.background = "url(img/clear_sky.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/clear_sky_night.jpg)"
+            wrapper.style.background = "url(img/clear_sky.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/clear_sky_night.jpg)"
         }
         else if (weatherStatus === "clouds")
         {
             weatherInfo = "the weather is cloudy"
-            body.style.background = "url(img/clouds.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/clouds_night.jpg)"
+            wrapper.style.background = "url(img/clouds.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/clouds_night.jpg)"
         }
         else if (weatherStatus === "thunderstorm")
         {
             weatherInfo = "there is a thunderstorm out there"
-            body.style.background = "url(img/thunderstorm.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/thunderstorm_night.jpg)"
+            wrapper.style.background = "url(img/thunderstorm.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/thunderstorm_night.jpg)"
         }
         else if (weatherStatus === "drizzle") 
         {
             weatherInfo = "it's drizzling"
-            body.style.background = "url(img/drizzle.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/drizzle_night.jpg)"
+            wrapper.style.background = "url(img/drizzle.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/drizzle_night.jpg)"
         }
         else if (weatherStatus === "rain")
         {
             weatherInfo = "it's raining"
-            body.style.background = "url(img/rain.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/rain_night.jpg)"
+            wrapper.style.background = "url(img/rain.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/rain_night.jpg)"
         }
         else if (weatherStatus === "snow")
         {
             weatherInfo = "it's snowing"
-            body.style.background = "url(img/snow.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/snow_night.jpg)"
+            wrapper.style.background = "url(img/snow.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/snow_night.jpg)"
         }
         else if (weatherStatus === "mist") 
         {
             weatherInfo = "the weather is misty"
-            body.style.background = "url(img/mist.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/mist_night.jpg)"
+            wrapper.style.background = "url(img/mist.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/mist_night.jpg)"
         }
         else if (weatherStatus === "fog") 
         {
             weatherInfo = "the weather is foggy"
-            body.style.background = "url(img/fog.jpg)"
-            if (greeting === "evening") body.style.background = "url(img/fog_night.jpg)"
+            wrapper.style.background = "url(img/fog.jpg)"
+            if (greeting === "evening") wrapper.style.background = "url(img/fog_night.jpg)"
         }
-        bodyContent.style.display = "none"
+        // bodyContent.style.display = "none"
 
 
         const username = "visitor"
@@ -387,7 +388,7 @@ navigator.geolocation.getCurrentPosition(function (position)
         // TURN ON WHEN FINISHED
         // talk(message)
 
-        bodyContent.style.display = "none"
+        // bodyContent.style.display = "none"
 
         const buttonDiv = document.querySelector(".buttonDiv")
         const checkbox = document.querySelector("input")
@@ -397,10 +398,33 @@ navigator.geolocation.getCurrentPosition(function (position)
         {
 
             //bring forward the content
-            bodyContent.style.display = "initial"
-            buttonDiv.style.transform = "scale(0)"
-            buttonDiv.style.transition = "transform 1s ease-out;"
-            buttonDiv.style.display = "none"
+            // bodyContent.style.display = "initial"
+            // buttonDiv.style.transform = "scale(0)"
+            // buttonDiv.style.transition = "transform 1s ease-out;"
+            // buttonDiv.style.display = "none"
+
+            bodyContent.style.display = "block"
+
+            bodyContent.style.animation = "scaleUp 3s"
+            bodyContent.style.animationTimingFunction = "ease-out"
+            bodyContent.style.animationFillMode = "forwards"
+
+            wrapper.style.display = "flex"
+            wrapper.style.animation = "borderRadius 3s"
+            wrapper.style.animationTimingFunction = "ease-out"
+            wrapper.style.animationFillMode = "forwards"
+
+            const label = document.querySelector("label")
+
+            label.style.display = "block"
+            label.style.animation = "scaleDown 1.2s"
+            label.style.animationDelay = "2s"
+            label.style.animationTimingFunction = "ease-in"
+            label.style.animationFillMode = "forwards"
+
+
+
+
 
 
             if (weatherStatus === "clear") 
@@ -453,7 +477,7 @@ navigator.geolocation.getCurrentPosition(function (position)
             }
 
 
-            talk(message)
+            setTimeout(talk, 2000, message)
         })
 
     });

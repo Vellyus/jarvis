@@ -14,6 +14,13 @@ body {
     background-repeat: no-repeat;
     /* background-size: cover; */
     /* background-position: center; */
+    background: #0c0c0c;
+}
+
+.bodyContent {
+    display: none;
+    /* animation: scaleUp 3s;
+    animation-timing-function: ease-out; */
 }
 
 .wrapper {
@@ -28,7 +35,9 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
-    z-index: -1;
+    display: none;
+    /* animation: scaleUp 3s;
+    animation-timing-function: ease-out; */
 
 }
 
@@ -147,13 +156,17 @@ button:hover {
 
 
 .buttonDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #0c0c0c;
+    min-width: 100vw;
+    background: transparent;
 }
 
 label {
@@ -162,6 +175,11 @@ label {
     height: 80px;
     cursor: pointer;
     border-radius: 50%;
+    z-index: 1;
+    /* animation: scaleDown 1.2s;
+    animation-delay: 2s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards; */
 }
 
 label .btn {
@@ -223,4 +241,52 @@ label input[type="checkbox"]:active~.btn {
         0 0 0 2px #000,
         0 0 0 5px #0c0c0c,
         0 0 0 5.5px #00a1ff;
+}
+
+/* Animations */
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(0);
+        border-radius: 50%;
+    }
+
+    90% {
+        border-radius: 10%;
+    }
+
+    100% {
+        border-radius: initial;
+        transform: scale(1);
+    }
+}
+
+@keyframes borderRadius {
+    0% {
+        border-radius: 50%;
+    }
+
+    90% {
+        border-radius: 10%;
+    }
+
+    100% {
+        border-radius: initial;
+    }
+}
+
+
+
+
+
+@keyframes scaleDown {
+    0% {
+        transform: scale(1);
+        display: initial
+    }
+
+    100% {
+        transform: scale(0);
+        display: none;
+    }
 }
