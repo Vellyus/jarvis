@@ -114,6 +114,7 @@ button:hover {
     font-size: 1.2em;
     letter-spacing: .04em;
     text-transform: capitalize;
+    margin-top: 2rem;
 }
 
 .clock {
