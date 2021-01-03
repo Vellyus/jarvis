@@ -307,4 +307,10 @@ label input[type="checkbox"]:active~.btn {
         font-size: 1.35em;
     }
 
+    .location,
+    .temperature {
+        width: 80%;
+    }
+
+
 }
