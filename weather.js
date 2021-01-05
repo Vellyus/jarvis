@@ -761,13 +761,3 @@ const calendar = {
     }
 }
 
-
-/* Birthdays:
-
-Mother: November 29.
-Father: May 3.
-Milán: February 20.
-Viki: July 16.
-
-*/
-
