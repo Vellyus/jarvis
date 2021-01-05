@@ -362,7 +362,7 @@ navigator.geolocation.getCurrentPosition(function (position)
 
 
 
-        const username = "visitor"
+        const username = "Visitor"
         let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
 
         const year = "year" + now.getFullYear()
