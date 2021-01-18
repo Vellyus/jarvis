@@ -286,13 +286,13 @@ navigator.geolocation.getCurrentPosition(function (position)
         }()
         const day = function ()
         {
-            if (now.getDay() === 0) return "Sunday"
-            else if (now.getDay() === 1) return "Monday"
-            else if (now.getDay() === 2) return "Tuesday"
-            else if (now.getDay() === 3) return "Wednesday"
-            else if (now.getDay() === 4) return "Thursday"
-            else if (now.getDay() === 5) return "Friday"
-            else return "Saturday"
+            if (now.getDay() === 0) return "sunday"
+            else if (now.getDay() === 1) return "monday"
+            else if (now.getDay() === 2) return "tuesday"
+            else if (now.getDay() === 3) return "wednesday"
+            else if (now.getDay() === 4) return "thursday"
+            else if (now.getDay() === 5) return "friday"
+            else return "saturday"
         }()
 
         const weatherStatus = data.weather[0].main.toLowerCase()
@@ -363,7 +363,10 @@ navigator.geolocation.getCurrentPosition(function (position)
 
 
         const username = "Visitor"
-        let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
+        // let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The outside temperature is ${data.main.temp} °C, ${weatherInfo}.`
+
+        let message = `Good ${greeting}, ${username}! It's ${hours}:${minutes} ${amORpm}, ${day}. The weather is ${data.main.temp} degrees with ${weather.weather[0].description}.`
+
 
         const year = "year" + now.getFullYear()
         const month = "month" + now.getMonth()
